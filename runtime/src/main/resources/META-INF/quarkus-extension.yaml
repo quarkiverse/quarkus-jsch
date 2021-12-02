@@ -1,0 +1,9 @@
+name: JSch
+description: Secure your connections with SSH
+metadata:
+  keywords:
+    - jsch
+#  guide: ...
+  categories:
+    - "miscellaneous"
+#  status: "preview"

@@ -1,0 +1,5 @@
+name: quarkus-jsch
+title: Quarkus JSch
+version: dev
+nav:
+  - modules/ROOT/nav.adoc
