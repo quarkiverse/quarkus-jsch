@@ -1,0 +1,19 @@
+= Quarkus - JSch
+
+include::./includes/attributes.adoc[]
+
+The Quarkus JSch extensions brings native support for the http://www.jcraft.com/jsch/[JSch library].
+
+== Installation
+
+If you want to use this extension, you need to add the `io.quarkiverse.jsch:quarkus-jsch` extension first.
+In your `pom.xml` file, add:
+
+[source,xml,subs=attributes+]
+----
+<dependency>
+    <groupId>io.quarkiverse.jsch</groupId>
+    <artifactId>quarkus-jsch</artifactId>
+    <version>{quarkus-jsch-version}</version>
+</dependency>
+----
