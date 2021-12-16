@@ -3,7 +3,7 @@ description: Secure your connections with SSH
 metadata:
   keywords:
     - jsch
-#  guide: ...
+  guide: https://quarkiverse.github.io/quarkiverse-docs/quarkus-jsch/dev/index.html
   categories:
     - "miscellaneous"
 #  status: "preview"
