@@ -2,7 +2,7 @@
 
 include::./includes/attributes.adoc[]
 
-The Quarkus JSch extensions brings native support for the http://www.jcraft.com/jsch/[JSch library].
+The Quarkus JSch extensions brings native support for the https://github.com/mwiede/jsch/[JSch library].
 
 == Installation
 
