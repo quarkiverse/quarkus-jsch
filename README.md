@@ -8,7 +8,7 @@
 
 ## Introduction
 
-Quarkus JSch is a Quarkus extension for the [JSch](http://www.jcraft.com/jsch/) library.
+Quarkus JSch is a Quarkus extension for the [JSch](https://github.com/mwiede/jsch) library.
 JSch is a Java implementation of the SSH2 protocol.
 
 The main purpose of this extension is to make JSch work in a native executable built with GraalVM/Mandrel.
