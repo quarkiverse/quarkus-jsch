@@ -3,7 +3,7 @@
 [![Version](https://img.shields.io/maven-central/v/io.quarkiverse.jsch/quarkus-jsch?logo=apache-maven&style=flat-square)](https://search.maven.org/artifact/io.quarkiverse.jsch/quarkus-jsch)
 
 <!-- ALL-CONTRIBUTORS-BADGE:START - Do not remove or modify this section -->
-[![All Contributors](https://img.shields.io/badge/all_contributors-2-orange.svg?style=flat-square)](#contributors-)
+[![All Contributors](https://img.shields.io/badge/all_contributors-3-orange.svg?style=flat-square)](#contributors-)
 <!-- ALL-CONTRIBUTORS-BADGE:END -->
 
 ## Introduction
@@ -25,6 +25,7 @@ Thanks goes to these wonderful people ([emoji key](https://allcontributors.org/d
   <tr>
     <td align="center"><a href="http://gastaldi.wordpress.com"><img src="https://avatars.githubusercontent.com/u/54133?v=4?s=100" width="100px;" alt=""/><br /><sub><b>George Gastaldi</b></sub></a><br /><a href="https://github.com/quarkiverse/quarkus-jsch/commits?author=gastaldi" title="Code">💻</a> <a href="#maintenance-gastaldi" title="Maintenance">🚧</a></td>
     <td align="center"><a href="https://github.com/gwenneg"><img src="https://avatars.githubusercontent.com/u/10584698?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Gwenneg Lepage</b></sub></a><br /><a href="https://github.com/quarkiverse/quarkus-jsch/commits?author=gwenneg" title="Code">💻</a></td>
+    <td align="center"><a href="https://jamesnetherton.github.io/"><img src="https://avatars.githubusercontent.com/u/4721408?v=4?s=100" width="100px;" alt=""/><br /><sub><b>James Netherton</b></sub></a><br /><a href="https://github.com/quarkiverse/quarkus-jsch/commits?author=jamesnetherton" title="Code">💻</a> <a href="#maintenance-jamesnetherton" title="Maintenance">🚧</a></td>
   </tr>
 </table>
 
