@@ -26,7 +26,7 @@
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
         <quarkus.version>2.14.3.Final</quarkus.version>
 
-        <jsch.version>0.2.4</jsch.version>
+        <jsch.version>0.2.5</jsch.version>
     </properties>
     <dependencyManagement>
         <dependencies>
