@@ -12,6 +12,7 @@ on:
       - '*.adoc'
       - '*.txt'
       - '.all-contributorsrc'
+      - '.github/project.yml'
   pull_request:
     paths-ignore:
       - '.gitignore'
@@ -21,6 +22,15 @@ on:
       - '*.adoc'
       - '*.txt'
       - '.all-contributorsrc'
+      - '.github/project.yml'
+
+defaults:
+  run:
+    shell: bash
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
 
 jobs:
   build:
@@ -36,12 +46,17 @@ jobs:
         if: startsWith(matrix.os, 'windows')
 
       - uses: actions/checkout@v3
+
       - name: Set up JDK 11
         uses: actions/setup-java@v3
         with:
-          distribution: temurin
+          distribution: 'temurin'
           java-version: 11
           cache: 'maven'
 
       - name: Build with Maven
-        run: mvn -B formatter:validate clean verify --file pom.xml
+        run: mvn -B clean verify -Dno-format
+
+      - name: Build with Maven (Native)
+        run: mvn -B verify -Dnative -Dnative.surefire.skip
+        if: ${{ startsWith(matrix.os, 'windows') == false}}
