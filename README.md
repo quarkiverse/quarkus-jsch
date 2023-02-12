@@ -1,6 +1,6 @@
 # Quarkus - JSch
 
-[![Version](https://img.shields.io/maven-central/v/io.quarkiverse.jsch/quarkus-jsch?logo=apache-maven&style=flat-square)](https://search.maven.org/artifact/io.quarkiverse.jsch/quarkus-jsch)
+[![Version](https://img.shields.io/maven-central/v/io.quarkiverse.jsch/quarkus-jsch?logo=apache-maven&style=for-the-badge)](https://search.maven.org/artifact/io.quarkiverse.jsch/quarkus-jsch)
 
 <!-- ALL-CONTRIBUTORS-BADGE:START - Do not remove or modify this section -->
 [![All Contributors](https://img.shields.io/badge/all_contributors-3-orange.svg?style=flat-square)](#contributors-)
