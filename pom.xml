@@ -8,7 +8,7 @@
     </parent>
     <groupId>io.quarkiverse.jsch</groupId>
     <artifactId>quarkus-jsch-parent</artifactId>
-    <version>3.0.0.Alpha1</version>
+    <version>999-SNAPSHOT</version>
     <packaging>pom</packaging>
     <name>Quarkus - JSch - Parent</name>
     <modules>
@@ -59,8 +59,4 @@
             </plugins>
         </pluginManagement>
     </build>
-
-  <scm>
-    <tag>3.0.0.Alpha1</tag>
-  </scm>
 </project>
