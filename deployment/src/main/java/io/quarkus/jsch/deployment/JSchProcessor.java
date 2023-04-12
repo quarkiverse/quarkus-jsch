@@ -29,7 +29,7 @@ class JSchProcessor {
     @BuildStep
     ReflectiveClassBuildItem reflection() {
         //Classes that use reflection
-        return new ReflectiveClassBuildItem(true, true,
+        return ReflectiveClassBuildItem.builder(
                 "com.jcraft.jsch.CipherNone",
                 "com.jcraft.jsch.DH448",
                 "com.jcraft.jsch.DH25519",
@@ -121,12 +121,12 @@ class JSchProcessor {
                 "com.jcraft.jsch.jce.SignatureRSASHA512SSHCOM",
                 "com.jcraft.jsch.jce.TripleDESCBC",
                 "com.jcraft.jsch.jce.TripleDESCTR",
-                "com.jcraft.jsch.jcraft.Compression",
                 "com.jcraft.jsch.jgss.GSSContextKrb5",
                 "com.jcraft.jsch.UserAuthGSSAPIWithMIC",
                 "com.jcraft.jsch.UserAuthKeyboardInteractive",
                 "com.jcraft.jsch.UserAuthNone",
                 "com.jcraft.jsch.UserAuthPassword",
-                "com.jcraft.jsch.UserAuthPublicKey");
+                "com.jcraft.jsch.UserAuthPublicKey")
+                .fields().methods().build();
     }
 }
