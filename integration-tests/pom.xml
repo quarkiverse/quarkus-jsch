@@ -5,9 +5,28 @@
         <groupId>io.quarkiverse.jsch</groupId>
         <artifactId>quarkus-jsch-parent</artifactId>
         <version>999-SNAPSHOT</version>
+        <relativePath>../pom.xml</relativePath>
     </parent>
     <artifactId>quarkus-jsch-integration-tests</artifactId>
     <name>Quarkus - JSch - Integration Tests</name>
+    <properties>
+        <version.sshd>2.10.0</version.sshd>
+        <native.surefire.skip>false</native.surefire.skip>
+    </properties>
+    <dependencyManagement>
+        <dependencies>
+            <dependency>
+                <groupId>org.apache.sshd</groupId>
+                <artifactId>sshd-core</artifactId>
+                <version>${version.sshd}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.apache.sshd</groupId>
+                <artifactId>sshd-common</artifactId>
+                <version>${version.sshd}</version>
+            </dependency>
+        </dependencies>
+    </dependencyManagement>
     <dependencies>
         <dependency>
             <groupId>io.quarkiverse.jsch</groupId>
@@ -16,7 +35,7 @@
         </dependency>
         <dependency>
             <groupId>io.quarkus</groupId>
-            <artifactId>quarkus-resteasy</artifactId>
+            <artifactId>quarkus-resteasy-reactive</artifactId>
         </dependency>
 
         <!-- Test dependencies -->
@@ -29,7 +48,6 @@
         <dependency>
             <groupId>org.apache.sshd</groupId>
             <artifactId>sshd-core</artifactId>
-            <version>2.9.2</version>
             <scope>test</scope>
         </dependency>
 
