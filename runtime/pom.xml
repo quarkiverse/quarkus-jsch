@@ -20,7 +20,7 @@
         </dependency>
         <dependency>
             <groupId>org.graalvm.sdk</groupId>
-            <artifactId>graalvm-sdk</artifactId>
+            <artifactId>graal-sdk</artifactId>
             <scope>provided</scope>
         </dependency>
     </dependencies>
