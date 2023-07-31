@@ -5,13 +5,9 @@ import static java.nio.charset.StandardCharsets.UTF_8;
 import static org.hamcrest.CoreMatchers.endsWith;
 import static org.hamcrest.core.Is.is;
 
+import java.io.OutputStream;
 import java.nio.file.Files;
 import java.nio.file.Path;
-import java.security.KeyPairGenerator;
-import java.security.PrivateKey;
-import java.security.PublicKey;
-import java.security.SecureRandom;
-import java.security.spec.RSAKeyGenParameterSpec;
 
 import org.apache.sshd.server.SshServer;
 import org.apache.sshd.server.auth.hostbased.AcceptAllHostBasedAuthenticator;
@@ -19,14 +15,13 @@ import org.apache.sshd.server.auth.password.AcceptAllPasswordAuthenticator;
 import org.apache.sshd.server.auth.pubkey.AcceptAllPublickeyAuthenticator;
 import org.apache.sshd.server.keyprovider.SimpleGeneratorHostKeyProvider;
 import org.apache.sshd.server.shell.UnknownCommandFactory;
-import org.bouncycastle.asn1.pkcs.PrivateKeyInfo;
-import org.bouncycastle.asn1.x509.SubjectPublicKeyInfo;
-import org.bouncycastle.openssl.MiscPEMGenerator;
-import org.bouncycastle.util.io.pem.PemWriter;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.io.TempDir;
+
+import com.jcraft.jsch.JSch;
+import com.jcraft.jsch.KeyPair;
 
 import io.quarkus.test.junit.QuarkusTest;
 
@@ -60,29 +55,17 @@ public class JSchTest {
     @Test
     void shouldDecryptUsingKeyPair(@TempDir Path keypairDir) throws Exception {
         String passphrase = "password";
-        byte[] seed = passphrase.getBytes(UTF_8);
-
-        SecureRandom rnd = SecureRandom.getInstanceStrong();
-        rnd.setSeed(seed);
-
-        RSAKeyGenParameterSpec spec = new RSAKeyGenParameterSpec(1024, RSAKeyGenParameterSpec.F0);
         // Generate a Keypair
-        KeyPairGenerator keyPairGenerator = KeyPairGenerator.getInstance("RSA");
-        keyPairGenerator.initialize(spec, rnd);
-
-        java.security.KeyPair keyPair = keyPairGenerator.generateKeyPair();
+        KeyPair keyPair = KeyPair.genKeyPair(new JSch(), KeyPair.RSA, 2048);
         // Save the private key
         Path privateKeyPath = keypairDir.resolve("test_rsa");
-        try (PemWriter writer = new PemWriter(Files.newBufferedWriter(privateKeyPath))) {
-            PrivateKey privateKey = keyPair.getPrivate();
-            writer.writeObject(new MiscPEMGenerator(PrivateKeyInfo.getInstance(privateKey.getEncoded())).generate());
+        try (OutputStream out = Files.newOutputStream(privateKeyPath)) {
+            keyPair.writePrivateKey(out, passphrase.getBytes(UTF_8));
         }
-
         // Save the public key
         Path publicKeyPath = keypairDir.resolve("test_rsa.pub");
-        try (PemWriter writer = new PemWriter(Files.newBufferedWriter(publicKeyPath))) {
-            PublicKey publicKey = keyPair.getPublic();
-            writer.writeObject(new MiscPEMGenerator(SubjectPublicKeyInfo.getInstance(publicKey.getEncoded())).generate());
+        try (OutputStream out = Files.newOutputStream(publicKeyPath)) {
+            keyPair.writePublicKey(out, "test_rsa");
         }
         given().queryParam("privateKey", privateKeyPath.toAbsolutePath().toString())
                 .queryParam("passphrase", passphrase)

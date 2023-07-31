@@ -1,7 +1,5 @@
 package io.quarkus.it.jsch;
 
-import java.nio.charset.StandardCharsets;
-
 import jakarta.ws.rs.GET;
 import jakarta.ws.rs.Path;
 import jakarta.ws.rs.Produces;
@@ -33,6 +31,6 @@ public class JSchResource {
     public boolean decryptKeypair(@QueryParam("privateKey") String privateKey,
             @QueryParam("passphrase") String passphrase) throws Exception {
         KeyPair keyPair = KeyPair.load(new JSch(), privateKey, null);
-        return keyPair.decrypt(passphrase.getBytes(StandardCharsets.UTF_8));
+        return keyPair.decrypt(passphrase);
     }
 }
