@@ -59,6 +59,7 @@ class JSchProcessor {
                 "com.jcraft.jsch.DHGEX512",
                 "com.jcraft.jsch.DHGN",
                 "com.jcraft.jsch.DHXEC",
+                "com.jcraft.jsch.jbcrypt.JBCrypt",
                 "com.jcraft.jsch.jce.AES128CBC",
                 "com.jcraft.jsch.jce.AES128CTR",
                 "com.jcraft.jsch.jce.AES192CBC",
