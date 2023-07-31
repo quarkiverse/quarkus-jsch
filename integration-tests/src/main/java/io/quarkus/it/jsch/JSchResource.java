@@ -1,11 +1,16 @@
 package io.quarkus.it.jsch;
 
+import java.nio.charset.StandardCharsets;
+
 import jakarta.ws.rs.GET;
 import jakarta.ws.rs.Path;
+import jakarta.ws.rs.Produces;
 import jakarta.ws.rs.QueryParam;
+import jakarta.ws.rs.core.MediaType;
 import jakarta.ws.rs.core.Response;
 
 import com.jcraft.jsch.JSch;
+import com.jcraft.jsch.KeyPair;
 import com.jcraft.jsch.Session;
 
 @Path("/jsch")
@@ -20,5 +25,14 @@ public class JSchResource {
         String serverVersion = session.getServerVersion();
         session.disconnect();
         return Response.ok(serverVersion).build();
+    }
+
+    @GET
+    @Path("/keypair/decrypt")
+    @Produces(MediaType.TEXT_PLAIN)
+    public boolean decryptKeypair(@QueryParam("privateKey") String privateKey,
+            @QueryParam("passphrase") String passphrase) throws Exception {
+        KeyPair keyPair = KeyPair.load(new JSch(), privateKey, null);
+        return keyPair.decrypt(passphrase.getBytes(StandardCharsets.UTF_8));
     }
 }
