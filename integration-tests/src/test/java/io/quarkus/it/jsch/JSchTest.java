@@ -75,6 +75,18 @@ public class JSchTest {
                 .body(is("true"));
     }
 
+    @Test
+    void shouldDecryptOpenSSLKeyUsingKeyPair() throws Exception {
+        String passphrase = "PrettyPlease";
+        String privateKeyPath = getClass().getClassLoader().getResource("openssh_private_key").getFile();
+        given().queryParam("privateKey", privateKeyPath)
+                .queryParam("passphrase", passphrase)
+                .get("/jsch/keypair/decrypt")
+                .then()
+                .statusCode(is(200))
+                .body(is("true"));
+    }
+
     @AfterEach
     void stopServer() throws Exception {
         if (sshd != null) {
