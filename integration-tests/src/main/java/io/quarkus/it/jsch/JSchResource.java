@@ -33,4 +33,18 @@ public class JSchResource {
         KeyPair keyPair = KeyPair.load(new JSch(), privateKey, null);
         return keyPair.decrypt(passphrase);
     }
+
+    @GET
+    @Path("/zlib")
+    public Response zlib(@QueryParam("host") String host, @QueryParam("port") int port) throws Exception {
+        JSch jsch = new JSch();
+        Session session = jsch.getSession(null, host, port);
+        session.setConfig("StrictHostKeyChecking", "no");
+        session.setConfig("compression.c2s", "zlib@openssh.com,zlib");
+        session.setConfig("compression_level", Integer.toString(9));
+        session.connect();
+        String serverVersion = session.getServerVersion();
+        session.disconnect();
+        return Response.ok(serverVersion).build();
+    }
 }

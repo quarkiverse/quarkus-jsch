@@ -87,6 +87,16 @@ public class JSchTest {
                 .body(is("true"));
     }
 
+    @Test
+    void shouldSupportZLibCompression() {
+        given().queryParam("host", sshd.getHost())
+                .queryParam("port", sshd.getPort())
+                .get("/jsch/zlib")
+                .then()
+                .statusCode(is(200))
+                .body(endsWith(sshd.getVersion()));
+    }
+
     @AfterEach
     void stopServer() throws Exception {
         if (sshd != null) {
