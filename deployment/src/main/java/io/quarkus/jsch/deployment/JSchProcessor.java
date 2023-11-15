@@ -123,6 +123,7 @@ class JSchProcessor {
                 "com.jcraft.jsch.jce.TripleDESCBC",
                 "com.jcraft.jsch.jce.TripleDESCTR",
                 "com.jcraft.jsch.jgss.GSSContextKrb5",
+                "com.jcraft.jsch.jzlib.Compression",
                 "com.jcraft.jsch.UserAuthGSSAPIWithMIC",
                 "com.jcraft.jsch.UserAuthKeyboardInteractive",
                 "com.jcraft.jsch.UserAuthNone",
