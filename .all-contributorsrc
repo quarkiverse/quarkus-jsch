@@ -52,6 +52,16 @@
       "contributions": [
         "code"
       ]
+    },
+    {
+      "login": "gnieser",
+      "name": "gnieser",
+      "avatar_url": "https://avatars.githubusercontent.com/u/16840894?v=4",
+      "profile": "https://github.com/gnieser",
+      "contributions": [
+        "bug",
+        "code"
+      ]
     }
   ],
   "contributorsPerLine": 7,
