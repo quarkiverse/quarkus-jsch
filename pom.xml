@@ -30,7 +30,7 @@
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
     <quarkus.version>3.2.0.Final</quarkus.version>
-    <jsch.version>0.2.17</jsch.version>
+    <jsch.version>0.2.18</jsch.version>
   </properties>
   <dependencyManagement>
     <dependencies>
