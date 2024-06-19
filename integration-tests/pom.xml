@@ -10,7 +10,7 @@
     <artifactId>quarkus-jsch-integration-tests</artifactId>
     <name>Quarkus - JSch - Integration Tests</name>
     <properties>
-        <version.sshd>2.12.1</version.sshd>
+        <version.sshd>2.13.0</version.sshd>
         <native.surefire.skip>false</native.surefire.skip>
     </properties>
     <dependencyManagement>
