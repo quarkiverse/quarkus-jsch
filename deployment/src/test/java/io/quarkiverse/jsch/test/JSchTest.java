@@ -8,7 +8,7 @@ import org.junit.jupiter.api.extension.RegisterExtension;
 
 import io.quarkus.test.QuarkusUnitTest;
 
-public class JschTest {
+public class JSchTest {
 
     // Start unit test with your extension loaded
     @RegisterExtension

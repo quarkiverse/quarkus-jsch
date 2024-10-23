@@ -1,15 +1,38 @@
 package io.quarkus.jsch.deployment;
 
+import java.util.Collection;
+import java.util.List;
+import java.util.function.Supplier;
+
+import jakarta.enterprise.context.RequestScoped;
+
+import org.jboss.jandex.AnnotationInstance;
+import org.jboss.jandex.AnnotationValue;
+import org.jboss.jandex.DotName;
+import org.jboss.jandex.IndexView;
+
+import com.jcraft.jsch.Session;
+
+import io.quarkus.arc.deployment.AdditionalBeanBuildItem;
+import io.quarkus.arc.deployment.BeanArchiveIndexBuildItem;
+import io.quarkus.arc.deployment.SyntheticBeanBuildItem;
+import io.quarkus.deployment.annotations.BuildProducer;
 import io.quarkus.deployment.annotations.BuildStep;
+import io.quarkus.deployment.annotations.ExecutionTime;
+import io.quarkus.deployment.annotations.Record;
 import io.quarkus.deployment.builditem.ExtensionSslNativeSupportBuildItem;
 import io.quarkus.deployment.builditem.FeatureBuildItem;
+import io.quarkus.deployment.builditem.ShutdownContextBuildItem;
 import io.quarkus.deployment.builditem.nativeimage.ReflectiveClassBuildItem;
 import io.quarkus.deployment.builditem.nativeimage.RuntimeInitializedClassBuildItem;
+import io.quarkus.jsch.JSchSession;
+import io.quarkus.jsch.JSchSessions;
+import io.quarkus.jsch.runtime.JSchSessionRecorder;
 import io.quarkus.jsch.runtime.PortWatcherRunTime;
 
 class JSchProcessor {
 
-    private static final String FEATURE = "jsch";
+    public static final String FEATURE = "jsch";
 
     @BuildStep
     FeatureBuildItem feature() {
@@ -130,5 +153,66 @@ class JSchProcessor {
                 "com.jcraft.jsch.UserAuthPassword",
                 "com.jcraft.jsch.UserAuthPublicKey")
                 .fields().methods().build();
+    }
+
+    @BuildStep
+    void registerAdditionalBeans(BuildProducer<AdditionalBeanBuildItem> additionalBeans) {
+        additionalBeans.produce(AdditionalBeanBuildItem.builder()
+                .addBeanClass(JSchSessions.class)
+                .setUnremovable()
+                .setDefaultScope(DotName.createSimple(RequestScoped.class))
+                .build());
+
+        additionalBeans.produce(AdditionalBeanBuildItem.builder()
+                .addBeanClass(JSchSession.class)
+                .build());
+    }
+
+    @BuildStep
+    void produceSessions(
+            BuildProducer<JSchSessionBuildItem> jschSessionBuildItemBuildProducer,
+            BeanArchiveIndexBuildItem indexBuildItem) {
+        IndexView index = indexBuildItem.getIndex();
+        Collection<AnnotationInstance> jschSessionAnnotations = index.getAnnotations(JSchSession.class);
+
+        if (jschSessionAnnotations.isEmpty()) {
+            // No @JschSession annotations found
+            return;
+        }
+
+        for (AnnotationInstance annotation : jschSessionAnnotations) {
+            AnnotationValue value = annotation.value();
+            String name = value != null ? value.asString() : JSchSession.DEFAULT_SESSION_NAME;
+            jschSessionBuildItemBuildProducer.produce(new JSchSessionBuildItem(name));
+        }
+    }
+
+    @Record(ExecutionTime.RUNTIME_INIT)
+    @BuildStep
+    void sessionRecorder(JSchSessionRecorder recorder,
+            List<JSchSessionBuildItem> sessionBuildItems,
+            ShutdownContextBuildItem shutdown,
+            BuildProducer<SyntheticBeanBuildItem> syntheticBeans) {
+        if (sessionBuildItems.isEmpty()) {
+            return;
+        }
+
+        for (JSchSessionBuildItem sessionBuildItem : sessionBuildItems) {
+            // create session
+            Supplier<Session> sessionSupplier = recorder.jschSessionSupplier(sessionBuildItem.name());
+            SyntheticBeanBuildItem.ExtendedBeanConfigurator configurator = SyntheticBeanBuildItem
+                    .configure(Session.class)
+                    .scope(RequestScoped.class)
+                    .setRuntimeInit()
+                    .unremovable()
+                    .supplier(sessionSupplier);
+
+            configurator.addQualifier()
+                    .annotation(JSchSession.class)
+                    .addValue("value", sessionBuildItem.name())
+                    .done();
+
+            syntheticBeans.produce(configurator.done());
+        }
     }
 }

@@ -17,3 +17,30 @@ In your `pom.xml` file, add:
     <version>{quarkus-jsch-version}</version>
 </dependency>
 ----
+
+== Usage
+
+=== Create session by annotation
+
+[source,java]
+----
+@RequestScoped
+public class MyBean {
+
+    // default session configurable by `quarkus.jsch.session.*`
+    @JschSession
+    Session defaultSession;
+
+    // named session configurable by `quarkus.jsch.session.doudou.*`
+    @JschSession("doudou")
+    Session namedSession;
+
+    public String getServerVersion() {
+        return defaultSession.getServerVersion();
+    }
+}
+----
+
+== Configuration
+
+include::./includes/quarkus-jsch.adoc[]
