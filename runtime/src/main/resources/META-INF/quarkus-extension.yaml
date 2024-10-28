@@ -6,4 +6,6 @@ metadata:
   guide: https://quarkiverse.github.io/quarkiverse-docs/quarkus-jsch/dev/index.html
   categories:
     - "miscellaneous"
+  config:
+    - "quarkus.jsch."
 #  status: "preview"

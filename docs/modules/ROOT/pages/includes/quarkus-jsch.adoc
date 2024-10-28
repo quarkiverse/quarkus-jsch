@@ -1,0 +1,484 @@
+:summaryTableId: quarkus-jsch_quarkus-jsch
+[.configuration-legend]
+icon:lock[title=Fixed at build time] Configuration property fixed at build time - All other configuration properties are overridable at runtime
+[.configuration-reference.searchable, cols="80,.^10,.^10"]
+|===
+
+h|[.header-title]##Configuration property##
+h|Type
+h|Default
+
+h|[[quarkus-jsch_section_quarkus-jsch-devservices]] [.section-name.section-level0]##link:#quarkus-jsch_section_quarkus-jsch-devservices[The JSch DevService configuration]##
+h|Type
+h|Default
+
+a|icon:lock[title=Fixed at build time] [[quarkus-jsch_quarkus-jsch-devservices-enabled]] [.property-path]##link:#quarkus-jsch_quarkus-jsch-devservices-enabled[`quarkus.jsch.devservices.enabled`]##
+
+[.description]
+--
+Enable the JSch DevService.
+
+
+ifdef::add-copy-button-to-env-var[]
+Environment variable: env_var_with_copy_button:+++QUARKUS_JSCH_DEVSERVICES_ENABLED+++[]
+endif::add-copy-button-to-env-var[]
+ifndef::add-copy-button-to-env-var[]
+Environment variable: `+++QUARKUS_JSCH_DEVSERVICES_ENABLED+++`
+endif::add-copy-button-to-env-var[]
+--
+|boolean
+|`true`
+
+a|icon:lock[title=Fixed at build time] [[quarkus-jsch_quarkus-jsch-devservices-image]] [.property-path]##link:#quarkus-jsch_quarkus-jsch-devservices-image[`quarkus.jsch.devservices.image`]##
+
+[.description]
+--
+The image to use for the JSch DevService.
+
+
+ifdef::add-copy-button-to-env-var[]
+Environment variable: env_var_with_copy_button:+++QUARKUS_JSCH_DEVSERVICES_IMAGE+++[]
+endif::add-copy-button-to-env-var[]
+ifndef::add-copy-button-to-env-var[]
+Environment variable: `+++QUARKUS_JSCH_DEVSERVICES_IMAGE+++`
+endif::add-copy-button-to-env-var[]
+--
+|string
+|`linuxserver/openssh-server`
+
+a|icon:lock[title=Fixed at build time] [[quarkus-jsch_quarkus-jsch-devservices-port]] [.property-path]##link:#quarkus-jsch_quarkus-jsch-devservices-port[`quarkus.jsch.devservices.port`]##
+
+[.description]
+--
+The port to use for the JSch DevService.
+
+
+ifdef::add-copy-button-to-env-var[]
+Environment variable: env_var_with_copy_button:+++QUARKUS_JSCH_DEVSERVICES_PORT+++[]
+endif::add-copy-button-to-env-var[]
+ifndef::add-copy-button-to-env-var[]
+Environment variable: `+++QUARKUS_JSCH_DEVSERVICES_PORT+++`
+endif::add-copy-button-to-env-var[]
+--
+|int
+|`2222`
+
+a|icon:lock[title=Fixed at build time] [[quarkus-jsch_quarkus-jsch-devservices-username]] [.property-path]##link:#quarkus-jsch_quarkus-jsch-devservices-username[`quarkus.jsch.devservices.username`]##
+
+[.description]
+--
+The username to use for the JSch DevService.
+
+
+ifdef::add-copy-button-to-env-var[]
+Environment variable: env_var_with_copy_button:+++QUARKUS_JSCH_DEVSERVICES_USERNAME+++[]
+endif::add-copy-button-to-env-var[]
+ifndef::add-copy-button-to-env-var[]
+Environment variable: `+++QUARKUS_JSCH_DEVSERVICES_USERNAME+++`
+endif::add-copy-button-to-env-var[]
+--
+|string
+|`quarkus`
+
+a|icon:lock[title=Fixed at build time] [[quarkus-jsch_quarkus-jsch-devservices-password]] [.property-path]##link:#quarkus-jsch_quarkus-jsch-devservices-password[`quarkus.jsch.devservices.password`]##
+
+[.description]
+--
+The password to use for the JSch DevService.
+
+
+ifdef::add-copy-button-to-env-var[]
+Environment variable: env_var_with_copy_button:+++QUARKUS_JSCH_DEVSERVICES_PASSWORD+++[]
+endif::add-copy-button-to-env-var[]
+ifndef::add-copy-button-to-env-var[]
+Environment variable: `+++QUARKUS_JSCH_DEVSERVICES_PASSWORD+++`
+endif::add-copy-button-to-env-var[]
+--
+|string
+|`quarkus`
+
+a|icon:lock[title=Fixed at build time] [[quarkus-jsch_quarkus-jsch-devservices-reuse]] [.property-path]##link:#quarkus-jsch_quarkus-jsch-devservices-reuse[`quarkus.jsch.devservices.reuse`]##
+
+[.description]
+--
+Whether to reuse the container for the JSch DevService.
+
+
+ifdef::add-copy-button-to-env-var[]
+Environment variable: env_var_with_copy_button:+++QUARKUS_JSCH_DEVSERVICES_REUSE+++[]
+endif::add-copy-button-to-env-var[]
+ifndef::add-copy-button-to-env-var[]
+Environment variable: `+++QUARKUS_JSCH_DEVSERVICES_REUSE+++`
+endif::add-copy-button-to-env-var[]
+--
+|boolean
+|`false`
+
+
+h|[[quarkus-jsch_section_quarkus-jsch-session]] [.section-name.section-level0]##link:#quarkus-jsch_section_quarkus-jsch-session[JSch sessions]##
+h|Type
+h|Default
+
+a| [[quarkus-jsch_quarkus-jsch-session-host]] [.property-path]##link:#quarkus-jsch_quarkus-jsch-session-host[`quarkus.jsch.session.host`]##
+
+`quarkus.jsch.session."session-name".host`
+
+[.description]
+--
+The host to use for the JSch session.
+
+This is a required configuration property in production mode.
+
+
+ifdef::add-copy-button-to-env-var[]
+Environment variable: env_var_with_copy_button:+++QUARKUS_JSCH_SESSION_HOST+++[]
+endif::add-copy-button-to-env-var[]
+ifndef::add-copy-button-to-env-var[]
+Environment variable: `+++QUARKUS_JSCH_SESSION_HOST+++`
+endif::add-copy-button-to-env-var[]
+--
+|string
+|
+
+a| [[quarkus-jsch_quarkus-jsch-session-port]] [.property-path]##link:#quarkus-jsch_quarkus-jsch-session-port[`quarkus.jsch.session.port`]##
+
+`quarkus.jsch.session."session-name".port`
+
+[.description]
+--
+The port to use for the JSch session.
+
+
+ifdef::add-copy-button-to-env-var[]
+Environment variable: env_var_with_copy_button:+++QUARKUS_JSCH_SESSION_PORT+++[]
+endif::add-copy-button-to-env-var[]
+ifndef::add-copy-button-to-env-var[]
+Environment variable: `+++QUARKUS_JSCH_SESSION_PORT+++`
+endif::add-copy-button-to-env-var[]
+--
+|int
+|`22`
+
+a| [[quarkus-jsch_quarkus-jsch-session-username]] [.property-path]##link:#quarkus-jsch_quarkus-jsch-session-username[`quarkus.jsch.session.username`]##
+
+`quarkus.jsch.session."session-name".username`
+
+[.description]
+--
+The username to use for the JSch session.
+
+
+ifdef::add-copy-button-to-env-var[]
+Environment variable: env_var_with_copy_button:+++QUARKUS_JSCH_SESSION_USERNAME+++[]
+endif::add-copy-button-to-env-var[]
+ifndef::add-copy-button-to-env-var[]
+Environment variable: `+++QUARKUS_JSCH_SESSION_USERNAME+++`
+endif::add-copy-button-to-env-var[]
+--
+|string
+|
+
+a| [[quarkus-jsch_quarkus-jsch-session-password]] [.property-path]##link:#quarkus-jsch_quarkus-jsch-session-password[`quarkus.jsch.session.password`]##
+
+`quarkus.jsch.session."session-name".password`
+
+[.description]
+--
+The password to use for the JSch session.
+
+
+ifdef::add-copy-button-to-env-var[]
+Environment variable: env_var_with_copy_button:+++QUARKUS_JSCH_SESSION_PASSWORD+++[]
+endif::add-copy-button-to-env-var[]
+ifndef::add-copy-button-to-env-var[]
+Environment variable: `+++QUARKUS_JSCH_SESSION_PASSWORD+++`
+endif::add-copy-button-to-env-var[]
+--
+|string
+|
+
+a| [[quarkus-jsch_quarkus-jsch-session-private-key]] [.property-path]##link:#quarkus-jsch_quarkus-jsch-session-private-key[`quarkus.jsch.session.private-key`]##
+
+`quarkus.jsch.session."session-name".private-key`
+
+[.description]
+--
+The private key to use for the JSch session.
+
+
+ifdef::add-copy-button-to-env-var[]
+Environment variable: env_var_with_copy_button:+++QUARKUS_JSCH_SESSION_PRIVATE_KEY+++[]
+endif::add-copy-button-to-env-var[]
+ifndef::add-copy-button-to-env-var[]
+Environment variable: `+++QUARKUS_JSCH_SESSION_PRIVATE_KEY+++`
+endif::add-copy-button-to-env-var[]
+--
+|string
+|
+
+a| [[quarkus-jsch_quarkus-jsch-session-passphrase]] [.property-path]##link:#quarkus-jsch_quarkus-jsch-session-passphrase[`quarkus.jsch.session.passphrase`]##
+
+`quarkus.jsch.session."session-name".passphrase`
+
+[.description]
+--
+The passphrase to use for the JSch session.
+
+
+ifdef::add-copy-button-to-env-var[]
+Environment variable: env_var_with_copy_button:+++QUARKUS_JSCH_SESSION_PASSPHRASE+++[]
+endif::add-copy-button-to-env-var[]
+ifndef::add-copy-button-to-env-var[]
+Environment variable: `+++QUARKUS_JSCH_SESSION_PASSPHRASE+++`
+endif::add-copy-button-to-env-var[]
+--
+|string
+|
+
+a| [[quarkus-jsch_quarkus-jsch-session-config-config-name]] [.property-path]##link:#quarkus-jsch_quarkus-jsch-session-config-config-name[`quarkus.jsch.session.config."config-name"`]##
+
+`quarkus.jsch.session."session-name".config."config-name"`
+
+[.description]
+--
+The configuration to use for the JSch session.
+
+
+ifdef::add-copy-button-to-env-var[]
+Environment variable: env_var_with_copy_button:+++QUARKUS_JSCH_SESSION_CONFIG__CONFIG_NAME_+++[]
+endif::add-copy-button-to-env-var[]
+ifndef::add-copy-button-to-env-var[]
+Environment variable: `+++QUARKUS_JSCH_SESSION_CONFIG__CONFIG_NAME_+++`
+endif::add-copy-button-to-env-var[]
+--
+|Map<String,String>
+|
+
+a| [[quarkus-jsch_quarkus-jsch-session-keep-alive-interval]] [.property-path]##link:#quarkus-jsch_quarkus-jsch-session-keep-alive-interval[`quarkus.jsch.session.keep-alive-interval`]##
+
+`quarkus.jsch.session."session-name".keep-alive-interval`
+
+[.description]
+--
+The keep alive interval to use for the JSch session.
+
+If zero is specified, any keep-alive message.
+
+
+ifdef::add-copy-button-to-env-var[]
+Environment variable: env_var_with_copy_button:+++QUARKUS_JSCH_SESSION_KEEP_ALIVE_INTERVAL+++[]
+endif::add-copy-button-to-env-var[]
+ifndef::add-copy-button-to-env-var[]
+Environment variable: `+++QUARKUS_JSCH_SESSION_KEEP_ALIVE_INTERVAL+++`
+endif::add-copy-button-to-env-var[]
+--
+|int
+|`0`
+
+h|[[quarkus-jsch_section_quarkus-jsch-session-proxy]] [.section-name.section-level1]##link:#quarkus-jsch_section_quarkus-jsch-session-proxy[The proxy to use for the JSch session]##
+h|Type
+h|Default
+
+a| [[quarkus-jsch_quarkus-jsch-session-proxy-enabled]] [.property-path]##link:#quarkus-jsch_quarkus-jsch-session-proxy-enabled[`quarkus.jsch.session.proxy.enabled`]##
+
+`quarkus.jsch.session."session-name".proxy.enabled`
+
+[.description]
+--
+Enable the proxy for the JSch session.
+
+Defaults to `true` if host is set.
+
+
+ifdef::add-copy-button-to-env-var[]
+Environment variable: env_var_with_copy_button:+++QUARKUS_JSCH_SESSION_PROXY_ENABLED+++[]
+endif::add-copy-button-to-env-var[]
+ifndef::add-copy-button-to-env-var[]
+Environment variable: `+++QUARKUS_JSCH_SESSION_PROXY_ENABLED+++`
+endif::add-copy-button-to-env-var[]
+--
+|boolean
+|
+
+a| [[quarkus-jsch_quarkus-jsch-session-proxy-host]] [.property-path]##link:#quarkus-jsch_quarkus-jsch-session-proxy-host[`quarkus.jsch.session.proxy.host`]##
+
+`quarkus.jsch.session."session-name".proxy.host`
+
+[.description]
+--
+The host to use for the JSch proxy.
+
+
+ifdef::add-copy-button-to-env-var[]
+Environment variable: env_var_with_copy_button:+++QUARKUS_JSCH_SESSION_PROXY_HOST+++[]
+endif::add-copy-button-to-env-var[]
+ifndef::add-copy-button-to-env-var[]
+Environment variable: `+++QUARKUS_JSCH_SESSION_PROXY_HOST+++`
+endif::add-copy-button-to-env-var[]
+--
+|string
+|required icon:exclamation-circle[title=Configuration property is required]
+
+a| [[quarkus-jsch_quarkus-jsch-session-proxy-port]] [.property-path]##link:#quarkus-jsch_quarkus-jsch-session-proxy-port[`quarkus.jsch.session.proxy.port`]##
+
+`quarkus.jsch.session."session-name".proxy.port`
+
+[.description]
+--
+The port to use for the JSch proxy.
+
+
+ifdef::add-copy-button-to-env-var[]
+Environment variable: env_var_with_copy_button:+++QUARKUS_JSCH_SESSION_PROXY_PORT+++[]
+endif::add-copy-button-to-env-var[]
+ifndef::add-copy-button-to-env-var[]
+Environment variable: `+++QUARKUS_JSCH_SESSION_PROXY_PORT+++`
+endif::add-copy-button-to-env-var[]
+--
+|int
+|`80`
+
+a| [[quarkus-jsch_quarkus-jsch-session-proxy-auth-username]] [.property-path]##link:#quarkus-jsch_quarkus-jsch-session-proxy-auth-username[`quarkus.jsch.session.proxy.auth.username`]##
+
+`quarkus.jsch.session."session-name".proxy.auth.username`
+
+[.description]
+--
+The username to use for the JSch proxy.
+
+`proxy.auth` is optional.
+
+
+ifdef::add-copy-button-to-env-var[]
+Environment variable: env_var_with_copy_button:+++QUARKUS_JSCH_SESSION_PROXY_AUTH_USERNAME+++[]
+endif::add-copy-button-to-env-var[]
+ifndef::add-copy-button-to-env-var[]
+Environment variable: `+++QUARKUS_JSCH_SESSION_PROXY_AUTH_USERNAME+++`
+endif::add-copy-button-to-env-var[]
+--
+|string
+|required icon:exclamation-circle[title=Configuration property is required]
+
+a| [[quarkus-jsch_quarkus-jsch-session-proxy-auth-password]] [.property-path]##link:#quarkus-jsch_quarkus-jsch-session-proxy-auth-password[`quarkus.jsch.session.proxy.auth.password`]##
+
+`quarkus.jsch.session."session-name".proxy.auth.password`
+
+[.description]
+--
+The password to use for the JSch proxy.
+
+`proxy.auth` is optional.
+
+
+ifdef::add-copy-button-to-env-var[]
+Environment variable: env_var_with_copy_button:+++QUARKUS_JSCH_SESSION_PROXY_AUTH_PASSWORD+++[]
+endif::add-copy-button-to-env-var[]
+ifndef::add-copy-button-to-env-var[]
+Environment variable: `+++QUARKUS_JSCH_SESSION_PROXY_AUTH_PASSWORD+++`
+endif::add-copy-button-to-env-var[]
+--
+|string
+|required icon:exclamation-circle[title=Configuration property is required]
+
+
+
+h|[[quarkus-jsch_section_quarkus-jsch-proxy]] [.section-name.section-level0]##link:#quarkus-jsch_section_quarkus-jsch-proxy[The default proxy configuration to use for each JSch session]##
+h|Type
+h|Default
+
+a| [[quarkus-jsch_quarkus-jsch-proxy-enabled]] [.property-path]##link:#quarkus-jsch_quarkus-jsch-proxy-enabled[`quarkus.jsch.proxy.enabled`]##
+
+[.description]
+--
+Enable the proxy for the JSch session.
+
+Defaults to `true` if host is set.
+
+
+ifdef::add-copy-button-to-env-var[]
+Environment variable: env_var_with_copy_button:+++QUARKUS_JSCH_PROXY_ENABLED+++[]
+endif::add-copy-button-to-env-var[]
+ifndef::add-copy-button-to-env-var[]
+Environment variable: `+++QUARKUS_JSCH_PROXY_ENABLED+++`
+endif::add-copy-button-to-env-var[]
+--
+|boolean
+|
+
+a| [[quarkus-jsch_quarkus-jsch-proxy-host]] [.property-path]##link:#quarkus-jsch_quarkus-jsch-proxy-host[`quarkus.jsch.proxy.host`]##
+
+[.description]
+--
+The host to use for the JSch proxy.
+
+
+ifdef::add-copy-button-to-env-var[]
+Environment variable: env_var_with_copy_button:+++QUARKUS_JSCH_PROXY_HOST+++[]
+endif::add-copy-button-to-env-var[]
+ifndef::add-copy-button-to-env-var[]
+Environment variable: `+++QUARKUS_JSCH_PROXY_HOST+++`
+endif::add-copy-button-to-env-var[]
+--
+|string
+|required icon:exclamation-circle[title=Configuration property is required]
+
+a| [[quarkus-jsch_quarkus-jsch-proxy-port]] [.property-path]##link:#quarkus-jsch_quarkus-jsch-proxy-port[`quarkus.jsch.proxy.port`]##
+
+[.description]
+--
+The port to use for the JSch proxy.
+
+
+ifdef::add-copy-button-to-env-var[]
+Environment variable: env_var_with_copy_button:+++QUARKUS_JSCH_PROXY_PORT+++[]
+endif::add-copy-button-to-env-var[]
+ifndef::add-copy-button-to-env-var[]
+Environment variable: `+++QUARKUS_JSCH_PROXY_PORT+++`
+endif::add-copy-button-to-env-var[]
+--
+|int
+|`80`
+
+a| [[quarkus-jsch_quarkus-jsch-proxy-auth-username]] [.property-path]##link:#quarkus-jsch_quarkus-jsch-proxy-auth-username[`quarkus.jsch.proxy.auth.username`]##
+
+[.description]
+--
+The username to use for the JSch proxy.
+
+`proxy.auth` is optional.
+
+
+ifdef::add-copy-button-to-env-var[]
+Environment variable: env_var_with_copy_button:+++QUARKUS_JSCH_PROXY_AUTH_USERNAME+++[]
+endif::add-copy-button-to-env-var[]
+ifndef::add-copy-button-to-env-var[]
+Environment variable: `+++QUARKUS_JSCH_PROXY_AUTH_USERNAME+++`
+endif::add-copy-button-to-env-var[]
+--
+|string
+|required icon:exclamation-circle[title=Configuration property is required]
+
+a| [[quarkus-jsch_quarkus-jsch-proxy-auth-password]] [.property-path]##link:#quarkus-jsch_quarkus-jsch-proxy-auth-password[`quarkus.jsch.proxy.auth.password`]##
+
+[.description]
+--
+The password to use for the JSch proxy.
+
+`proxy.auth` is optional.
+
+
+ifdef::add-copy-button-to-env-var[]
+Environment variable: env_var_with_copy_button:+++QUARKUS_JSCH_PROXY_AUTH_PASSWORD+++[]
+endif::add-copy-button-to-env-var[]
+ifndef::add-copy-button-to-env-var[]
+Environment variable: `+++QUARKUS_JSCH_PROXY_AUTH_PASSWORD+++`
+endif::add-copy-button-to-env-var[]
+--
+|string
+|required icon:exclamation-circle[title=Configuration property is required]
+
+
+|===
+
+
+:!summaryTableId:

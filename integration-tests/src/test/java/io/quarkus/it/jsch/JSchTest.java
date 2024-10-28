@@ -10,37 +10,21 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 
 import org.apache.sshd.server.SshServer;
-import org.apache.sshd.server.auth.hostbased.AcceptAllHostBasedAuthenticator;
-import org.apache.sshd.server.auth.password.AcceptAllPasswordAuthenticator;
-import org.apache.sshd.server.auth.pubkey.AcceptAllPublickeyAuthenticator;
-import org.apache.sshd.server.keyprovider.SimpleGeneratorHostKeyProvider;
-import org.apache.sshd.server.shell.UnknownCommandFactory;
-import org.junit.jupiter.api.AfterEach;
-import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.io.TempDir;
 
 import com.jcraft.jsch.JSch;
 import com.jcraft.jsch.KeyPair;
 
+import io.quarkus.test.common.QuarkusTestResource;
 import io.quarkus.test.junit.QuarkusTest;
 
 @QuarkusTest
-public class JSchTest {
+@QuarkusTestResource(SshServerResource.class)
+class JSchTest {
 
-    private SshServer sshd;
-
-    @BeforeEach
-    public void setupSSHDServer() throws Exception {
-        sshd = SshServer.setUpDefaultServer();
-        sshd.setKeyPairProvider(new SimpleGeneratorHostKeyProvider(Files.createTempFile("host", "key")));
-        sshd.setHostBasedAuthenticator(AcceptAllHostBasedAuthenticator.INSTANCE);
-        sshd.setPasswordAuthenticator(AcceptAllPasswordAuthenticator.INSTANCE);
-        sshd.setPublickeyAuthenticator(AcceptAllPublickeyAuthenticator.INSTANCE);
-        sshd.setCommandFactory(UnknownCommandFactory.INSTANCE);
-        sshd.setHost("localhost");
-        sshd.start();
-    }
+    @WithSshTestServer
+    SshServer sshd;
 
     @Test
     void shouldConnect() {
@@ -50,6 +34,50 @@ public class JSchTest {
                 .then()
                 .statusCode(is(200))
                 .body(endsWith(sshd.getVersion()));
+    }
+
+    @Test
+    void shouldConnectWithDefaultSession() {
+        given()
+                .get("/jsch/session-default")
+                .then()
+                .statusCode(is(200))
+                .body(endsWith(sshd.getVersion()));
+    }
+
+    @Test
+    void shouldConnectWithNamedSession() {
+        given()
+                .get("/jsch/session-named")
+                .then()
+                .statusCode(is(200))
+                .body(endsWith(sshd.getVersion()));
+    }
+
+    @Test
+    void shouldConnectWithProgSession() {
+        given()
+                .get("/jsch/session-program")
+                .then()
+                .statusCode(is(200))
+                .body(endsWith(sshd.getVersion()));
+    }
+
+    @Test
+    void shouldConnectWithoutMockSession() {
+        given()
+                .get("/jsch/session-no-mock")
+                .then()
+                .statusCode(is(200))
+                .body(endsWith(sshd.getVersion()));
+    }
+
+    @Test
+    void shouldNotConnect() {
+        given()
+                .get("/jsch/session-not-found")
+                .then()
+                .statusCode(is(500));
     }
 
     @Test
@@ -76,7 +104,7 @@ public class JSchTest {
     }
 
     @Test
-    void shouldDecryptOpenSSLKeyUsingKeyPair() throws Exception {
+    void shouldDecryptOpenSSLKeyUsingKeyPair() {
         String passphrase = "PrettyPlease";
         String privateKeyPath = getClass().getClassLoader().getResource("openssh_private_key").getFile();
         given().queryParam("privateKey", privateKeyPath)
@@ -95,12 +123,5 @@ public class JSchTest {
                 .then()
                 .statusCode(is(200))
                 .body(endsWith(sshd.getVersion()));
-    }
-
-    @AfterEach
-    void stopServer() throws Exception {
-        if (sshd != null) {
-            sshd.stop(true);
-        }
     }
 }
