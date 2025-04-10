@@ -8,6 +8,7 @@
     </parent>
     <artifactId>quarkus-jsch-deployment</artifactId>
     <name>Quarkus - JSch - Deployment</name>
+    <description>Quarkus - JSch - Deployment</description>
     <dependencies>
         <dependency>
             <groupId>io.quarkus</groupId>
