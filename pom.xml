@@ -23,7 +23,7 @@
   </scm>
   <properties>
     <quarkus.version>3.15.1</quarkus.version>
-    <jsch.version>2.27.0</jsch.version>
+    <jsch.version>2.27.2</jsch.version>
   </properties>
   <dependencyManagement>
     <dependencies>
