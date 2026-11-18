@@ -1,4 +1,4 @@
-:quarkus-version: 4.0.0.Beta1
+:quarkus-version: 4.0.0
 :quarkus-jsch-version: 4.0.0.Beta1
 
 :quarkus-org-url: https://github.com/quarkusio
